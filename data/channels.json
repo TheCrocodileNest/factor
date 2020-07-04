@@ -1,0 +1,5 @@
+[
+	{ "name": "site", "payments": ["cartão", "boleto"] },
+	{ "name": "ml", "payments": ["mercado pago"] },
+	{ "name": "shopping", "payments": ["dinheiro", "cartão"] }
+]
