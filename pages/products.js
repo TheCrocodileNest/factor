@@ -82,7 +82,7 @@ const Products = () => {
                     ))}
                 </Select>
             </p>
-            <Table dataSource={dataSource} columns={columns} rowSelection={{type: 'checkbox'}} rowKey="Name" />
+            <Table dataSource={dataSource} columns={columns} rowKey="Name" />
 		</Navigation>
 	)
 }
