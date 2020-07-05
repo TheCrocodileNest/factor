@@ -27,11 +27,11 @@ const getLastOrder = product => {
         const minutesAgo = (currentDate - latestOrderDate) / (60000)
         console.log(minutesAgo)
         if (minutesAgo < 60 && minutesAgo >= 0) {
-            lastOrderString = `${minutesAgo} minutos`
+            lastOrderString = `${Math.floor(minutesAgo)} minutos atrás`
         } else {
             const hoursAgo = minutesAgo / 60
             if (hoursAgo < 24 && hoursAgo >= 0) {
-                lastOrderString = `${hoursAgo} horas`
+                lastOrderString = `${Math.floor(hoursAgo)} horas atrás`
             } else {
                 lastOrderString = latestOrderDate.toLocaleDateString()
             }
