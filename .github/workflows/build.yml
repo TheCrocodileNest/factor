@@ -13,6 +13,8 @@ jobs:
           persist-credentials: false
 
       - name: Install and Build
+        env:
+          NEXT_PUBLIC_BASE: /factor
         run: |
           npm install
           npx next build && npx next export
