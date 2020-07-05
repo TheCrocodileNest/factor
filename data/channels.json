@@ -16,7 +16,8 @@
 		"StartsWithCurrencySymbol": true,
 		"Position": 1,
 		"ConditionRule": 1,
-		"Payments": [ "Cartão", "Dinheiro" ]
+		"Payments": [ "Cartão", "Dinheiro" ],
+		"repick": 0.99
 	},
 	{
 		"Id": 2,
@@ -35,7 +36,8 @@
 		"StartsWithCurrencySymbol": true,
 		"Position": 1,
 		"ConditionRule": 1,
-		"Payments": [ "Cartão", "Boleto" ]
+		"Payments": [ "Cartão", "Boleto" ],
+		"repick": 0
 	},
 	{
 		"Id": 3,
@@ -54,6 +56,7 @@
 		"StartsWithCurrencySymbol": true,
 		"Position": 1,
 		"ConditionRule": 1,
-		"Payments": [ "Mercado Pago" ]
+		"Payments": [ "Mercado Pago" ],
+		"repick": 0.4
 	}
 ]

@@ -12,16 +12,19 @@ const channels = require('./channels.json')
 function random(min, max) {
 	return min + Math.floor(Math.random() * (max - min + 1))
 }
+function pick(list) {
+	return list[random(0, list.length - 1)]
+}
 function randomItems(maxItems = 4) {
-	return new Array(random(1, maxItems))
-		.fill(0)
-		.map(() => products[random(0, products.length - 1)])
+	return new Array(random(1, maxItems)).fill(0).map(() => pick(products))
 }
 function randomChannel() {
-	const { Name, Payments } = channels[random(0, channels.length - 1)]
+	let channel = pick(channels)
+	if (Math.random() < channel.repick) channel = pick(channels)
+	const { Name, Payments } = channel
 	return {
 		Name,
-		Payment: Payments[random(0, Payments.length - 1)],
+		Payment: pick(Payments),
 	}
 }
 function randomOrders(creationDate, ordersDaily = [10, 20]) {

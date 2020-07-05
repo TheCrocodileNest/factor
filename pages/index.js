@@ -26,7 +26,7 @@ const Dashboard = ({ revenue }) => {
 				/>
 				<PieChart
 					title="Vendas por Canal"
-					total={`R$ ${revenue.total.toFixed(2)}`}
+					total={revenue.total}
 					x="name"
 					y="value"
 					data={revenue.channel}

@@ -30,7 +30,7 @@ const Navigation = ({ section, children }) => (
 			<title>Factor</title>
 		</Head>
 		<Layout>
-			<Layout.Sider theme="light">
+			<Layout.Sider theme="light" style={{minHeight: '100vh'}}>
 				<Logo />
 				<Menu mode="inline" selectedKeys={[section]}>
 					<Menu.Item key="dashboard" icon={<DashboardOutlined />}>
