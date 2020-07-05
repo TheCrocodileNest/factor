@@ -1,32 +1,42 @@
 {
-  "name": "factor",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "data": "node data/createData"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TheCrocodileNest/factor.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TheCrocodileNest/factor/issues"
-  },
-  "homepage": "https://github.com/TheCrocodileNest/factor#readme",
-  "dependencies": {
-    "@ant-design/icons": "^4.2.1",
-    "antd": "^4.4.0",
-    "next": "^9.4.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "uuid": "^8.2.0",
-    "victory": "^35.0.2"
-  }
+	"name": "factor",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"start": "next start",
+		"data": "node data/createData"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TheCrocodileNest/factor.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/TheCrocodileNest/factor/issues"
+	},
+	"homepage": "https://github.com/TheCrocodileNest/factor#readme",
+	"dependencies": {
+		"@ant-design/icons": "^4.2.1",
+		"antd": "^4.4.0",
+		"next": "^9.4.4",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"uuid": "^8.2.0",
+		"victory": "^35.0.2"
+	},
+	"prettier": {
+		"semi": false,
+		"singleQuote": true,
+		"tabWidth": 2,
+		"trailingComma": "es5",
+		"useTabs": true
+	},
+	"devDependencies": {
+		"prettier": "^2.0.5"
+	}
 }
