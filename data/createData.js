@@ -17,10 +17,10 @@ function randomItems(maxItems = 4) {
 		.map(() => products[random(0, products.length - 1)])
 }
 function randomChannel() {
-	const { name, payments } = channels[random(0, channels.length - 1)]
+	const { Name, Payments } = channels[random(0, channels.length - 1)]
 	return {
-		name,
-		payment: payments[random(0, payments.length - 1)],
+		Name,
+		Payment: Payments[random(0, payments.length - 1)],
 	}
 }
 function randomOrders(creationDate, ordersDaily = [2, 4]) {
