@@ -28,7 +28,11 @@ const getPayments = ({month, channel}) => {
 
 	return {
 		month: Object.values(days),
-		payment: Object.values(payments),
+		payment: Object.values(payments).sort((a, b) => {
+			const x = a.name.toLowerCase()
+			const y = b.name.toLowerCase()
+			return x < y ? -1 : x > y ? 1 : 0;
+		}),
 		total,
 	}
 }

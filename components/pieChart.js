@@ -27,7 +27,7 @@ const PieChart = ({ title, data, x, y, total, bordered = true }) => (
 				x={x}
 				y={y}
 				innerRadius={125}
-				colorScale={colorScale}
+				colorScale="qualitative"
 				labels={[]}
 			/>
 			<VictoryLegend
@@ -38,7 +38,7 @@ const PieChart = ({ title, data, x, y, total, bordered = true }) => (
 				gutter={20}
 				data={data.map((item) => ({ name: item[x] }))}
 				style={{ labels: { fontSize: 20 } }}
-				colorScale={colorScale}
+				colorScale="qualitative"
 			/>
 		</svg>
 	</Card>
