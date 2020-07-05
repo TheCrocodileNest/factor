@@ -2,9 +2,7 @@ import React from 'react'
 import { Card } from 'antd'
 import { VictoryPie, VictoryLabel, VictoryLegend } from 'victory'
 
-const colorScale = ['#2ed47a', '#f7685b', '#ffb946']
-
-const PieChart = ({ title, data, x, y, total, bordered = true }) => (
+const PieChart = ({ title, data, x, y, total, bordered = true, colorScale = 'qualitative' }) => (
 	<Card title={title} bordered={bordered}>
 		<svg viewBox="0 0 650 400">
 			{total !== undefined ? (
@@ -27,7 +25,7 @@ const PieChart = ({ title, data, x, y, total, bordered = true }) => (
 				x={x}
 				y={y}
 				innerRadius={125}
-				colorScale="qualitative"
+				colorScale={colorScale}
 				labels={[]}
 			/>
 			<VictoryLegend
@@ -38,7 +36,7 @@ const PieChart = ({ title, data, x, y, total, bordered = true }) => (
 				gutter={20}
 				data={data.map((item) => ({ name: item[x] }))}
 				style={{ labels: { fontSize: 20 } }}
-				colorScale="qualitative"
+				colorScale={colorScale}
 			/>
 		</svg>
 	</Card>
