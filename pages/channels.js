@@ -3,7 +3,7 @@ import { Card, Row, Col, Divider } from 'antd'
 import Navigation from '../components/navigation'
 import PieChart from '../components/pieChart'
 
-export default function Channels({ channels, payments }) {
+export default function Channels({ channels, payments, status }) {
 	return (
 		<Navigation section="channels">
 			{channels.map((channel) => (
@@ -18,13 +18,22 @@ export default function Channels({ channels, payments }) {
 								{channel.spotlightCategory}
 							</Card>
 						</Col>
-						<Col flex={4}>
+						<Col flex={2}>
 							<PieChart
 								title="Vendas por meio de pagamento"
 								total={payments[channel.Id].total}
 								x="name"
 								y="value"
 								data={payments[channel.Id].payment}
+							/>
+						</Col>
+						<Col flex={2}>
+							<PieChart
+								title="Balanço de status de vendas"
+								total={status[channel.Id].total}
+								x="name"
+								y="value"
+								data={status[channel.Id].status}
 							/>
 						</Col>
 					</Row>
@@ -38,11 +47,14 @@ export default function Channels({ channels, payments }) {
 import getChannels from '../services/channels'
 import getPayments from '../services/payments'
 import Grid from 'antd/lib/card/Grid'
+import getStatus from '../services/status'
 export async function getStaticProps() {
 	const channels = getChannels()
 	const payments = {}
+	const status = {}
 	for (const channel of channels) {
 		payments[channel.Id] = getPayments({channel: channel.Id})
+		status[channel.Id] = getStatus({channel: channel.Id})
 	}
-	return { props: { channels, payments } }
+	return { props: { channels, payments, status } }
 }
