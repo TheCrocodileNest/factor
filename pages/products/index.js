@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import { Table, Select, Input } from 'antd'
-import { SearchOutlined, BellOutlined } from '@ant-design/icons';
+import { Table, Input } from 'antd'
+import Link from 'next/link'
+import { SearchOutlined } from '@ant-design/icons';
 
 import Navigation from '../../components/navigation'
 
 import products from '../../data/products.json'
 import orders from '../../data/orders.json'
-import channels from '../../data/channels.json'
-
-const { Option } = Select;
 
 const getStock = product => {
     return ""
@@ -52,7 +50,8 @@ products.forEach(product => {
 const columns = [
     {
         title: 'Nome',
-        dataIndex: 'Name'
+        dataIndex: 'Name',
+        render: (text, record) => <Link href='/products/[LinkId]' as={'/products/' + record.LinkId}>{text}</Link>
     },
     {
         title: 'Categoria',
