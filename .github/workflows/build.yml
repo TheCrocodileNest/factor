@@ -12,6 +12,11 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
       - name: Install and Build
         env:
           NEXT_PUBLIC_BASE: /factor
