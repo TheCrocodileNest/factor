@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Table, Select, Input } from 'antd'
 import { SearchOutlined, BellOutlined } from '@ant-design/icons';
 
@@ -25,8 +25,6 @@ const getInsights = product => {
 const getLastOrder = product => {
     return "Lorem ipsum"
 }
-
-const searchOnChange = _ => _
 
 dataSource.map(product => {
     product.Channels = getChannels(product)
@@ -64,25 +62,32 @@ const columns = [
 ]
 
 const Products = () => {
+    const [filter, setFilter] = useState('')
+
+    const searchOnChange = e => {
+        const value = e.target.value && e.target.value.toLocaleLowerCase();
+        setFilter(value);
+    }
+
 	return (
 		<Navigation section='products'>
             <Input 
-                prefix={<SearchOutlined />}
-                suffix={<BellOutlined />}
+                prefix={<SearchOutlined style={{color: '#ced4d9'}}/>}
                 placeholder="Search for a product"
+                size="large"
                 allowClear
                 onChange={searchOnChange} 
             />
             <p> 
                 Canal: 
-                <Select defaultValue="All" style={{width: 150}} bordered={false}>
+                <Select defaultValue="All" style={{width: 140}} bordered={false}>
                     <Option key='All'>All</Option>
                     {channels.map(channel => (
                         <Option key={channel.Id}>{channel.Name}</Option>
                     ))}
                 </Select>
             </p>
-            <Table dataSource={dataSource} columns={columns} rowKey="Name" />
+            <Table dataSource={dataSource.filter(row => !filter || row.Name.toLocaleLowerCase().includes(filter))} columns={columns} rowKey="Name" />
 		</Navigation>
 	)
 }
