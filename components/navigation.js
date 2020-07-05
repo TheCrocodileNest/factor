@@ -34,20 +34,30 @@ const Navigation = ({ section, children }) => (
 				<Logo />
 				<Menu mode="inline" selectedKeys={[section]}>
 					<Menu.Item key="dashboard" icon={<DashboardOutlined />}>
-						<Link href="/">Painel</Link>
+						<Link href="/">
+							<a>Painel</a>
+						</Link>
 					</Menu.Item>
 					<Menu.Item key="products" icon={<TagsOutlined />}>
-						<Link href="/products">Produtos</Link>
+						<Link href="/products">
+							<a>Produtos</a>
+						</Link>
 					</Menu.Item>
 					<Menu.Item key="channels" icon={<ShopOutlined />}>
-						<Link href="/channels">Canais</Link>
+						<Link href="/channels">
+							<a>Canais</a>
+						</Link>
 					</Menu.Item>
 					<Menu.Item key="insights" icon={<ExperimentOutlined />}>
-						<Link href="/insights">Insights</Link>
+						<Link href="/insights">
+							<a>Insights</a>
+						</Link>
 					</Menu.Item>
 					<Menu.Divider />
 					<Menu.Item key="settings" icon={<SettingOutlined />}>
-						<Link href="/settings">Configurações</Link>
+						<Link href="/settings">
+							<a>Configurações</a>
+						</Link>
 					</Menu.Item>
 				</Menu>
 			</Layout.Sider>
