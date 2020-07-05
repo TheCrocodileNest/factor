@@ -28,7 +28,11 @@ const getStatus = ({month, channel}) => {
 
 	return {
 		month: Object.values(days),
-		status: Object.values(status),
+		status: Object.values(status).sort((a, b) => {
+			const x = a.name.toLowerCase()
+			const y = b.name.toLowerCase()
+			return x < y ? -1 : x > y ? 1 : 0;
+		}),
 		total,
 	}
 }

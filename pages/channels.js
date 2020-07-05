@@ -7,14 +7,14 @@ export default function Channels({ channels, payments, status }) {
 	return (
 		<Navigation section="channels">
 			{channels.map((channel) => (
-				<Card title={channel.Name} key={channel.Id} style={{ width: '100%', marginBottom: '30px' }}>
+				<Card title={channel.Name} key={channel.Id} style={{width: '100%', marginBottom: '30px'}}>
 				<Grid style={{width:'100%'}}>
 					<Row>
 						<Col flex={1} style={{marginRight: '20px'}}>
 							<Card title='Produto em Destaque' style={{marginBottom: '20px'}}>
 								{channel.spotlightProduct}
 							</Card>
-							<Card title='Categoria em Destaque'>
+							<Card title='Categoria em Destaque' style={{marginBottom: '20px'}}>
 								{channel.spotlightCategory}
 							</Card>
 						</Col>
@@ -30,10 +30,10 @@ export default function Channels({ channels, payments, status }) {
 						<Col flex={2}>
 							<PieChart
 								title="Balanço de status de vendas"
-								total={status[channel.Id].total}
 								x="name"
 								y="value"
 								data={status[channel.Id].status}
+								colorScale={['#ff0000', '#00cc00', '#99ff33', '#ffff00']}
 							/>
 						</Col>
 					</Row>
