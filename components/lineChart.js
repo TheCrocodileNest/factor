@@ -26,6 +26,7 @@ const LineChart = ({ title, data, x, y, bordered = true }) => (
 				}}
 			/>
 			<VictoryAxis
+				fixLabelOverlap
 				style={{ axis: { stroke: 'transparent' } }}
 				tickFormat={date => new Date(date).toLocaleDateString(...dateFormat)}
 			/>
