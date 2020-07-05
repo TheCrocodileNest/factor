@@ -1,6 +1,5 @@
 import React from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import { Layout, Menu } from 'antd'
 import {
 	ExperimentOutlined,
@@ -9,6 +8,8 @@ import {
 	TagsOutlined,
 	SettingOutlined,
 } from '@ant-design/icons'
+
+import Link from './link'
 
 const Logo = () => (
 	<div
@@ -30,34 +31,24 @@ const Navigation = ({ section, children }) => (
 			<title>Factor</title>
 		</Head>
 		<Layout>
-			<Layout.Sider theme="light" style={{minHeight: '100vh'}}>
+			<Layout.Sider theme="light" style={{ minHeight: '100vh' }}>
 				<Logo />
 				<Menu mode="inline" selectedKeys={[section]}>
 					<Menu.Item key="dashboard" icon={<DashboardOutlined />}>
-						<Link href="/">
-							<a>Painel</a>
-						</Link>
+						<Link href="/">Painel</Link>
 					</Menu.Item>
 					<Menu.Item key="products" icon={<TagsOutlined />}>
-						<Link href="/products">
-							<a>Produtos</a>
-						</Link>
+						<Link href="/products">Produtos</Link>
 					</Menu.Item>
 					<Menu.Item key="channels" icon={<ShopOutlined />}>
-						<Link href="/channels">
-							<a>Canais</a>
-						</Link>
+						<Link href="/channels">Canais</Link>
 					</Menu.Item>
 					<Menu.Item key="insights" icon={<ExperimentOutlined />}>
-						<Link href="/insights">
-							<a>Insights</a>
-						</Link>
+						<Link href="/insights">Insights</Link>
 					</Menu.Item>
 					<Menu.Divider />
 					<Menu.Item key="settings" icon={<SettingOutlined />}>
-						<Link href="/settings">
-							<a>Configurações</a>
-						</Link>
+						<Link href="/settings">Configurações</Link>
 					</Menu.Item>
 				</Menu>
 			</Layout.Sider>

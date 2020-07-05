@@ -8,6 +8,7 @@ if (process.argv.length !== 4) {
 
 const products = require('./products.json')
 const channels = require('./channels.json')
+const status = require('./status.json')
 
 function random(min, max) {
 	return min + Math.floor(Math.random() * (max - min + 1))
@@ -21,21 +22,30 @@ function randomItems(maxItems = 4) {
 function randomChannel() {
 	let channel = pick(channels)
 	if (Math.random() < channel.repick) channel = pick(channels)
-	const { Name, Payments } = channel
+	const { Id, Name, Payments } = channel
 	return {
+		Id,
 		Name,
 		Payment: pick(Payments),
 	}
+}
+function randomStatus() {
+	let statusChoice = pick(status)
+	if (Math.random() < statusChoice.repick) statusChoice = pick(status)
+	return statusChoice
 }
 function randomOrders(creationDate, ordersDaily = [10, 20]) {
 	return new Array(random(...ordersDaily)).fill(0).map(() => {
 		const items = randomItems()
 		const channel = randomChannel()
+		const statusChoice = randomStatus()
 		return {
 			id: uuid(),
 			creationDate,
 			items,
-			salesChannel: channel.Name,
+			salesChannel: channel.Id,
+			status: statusChoice.status,
+			statusDescription: statusChoice.statusDescription,
 			paymentNames: channel.Payment,
 			totalItems: items.length,
 			totalValue: items.reduce((acc, { Price }) => acc + Price, 0),

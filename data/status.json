@@ -1,0 +1,31 @@
+[
+    {
+        "status": "waiting-for-sellers-confirmation",
+        "statusDescription": "Aguardando autorização para despachar"
+    },
+    {
+        "status": "payment-pending",
+        "statusDescription": "Pagamento Pendente"
+    },
+    {
+        "status": "payment-approved",
+        "statusDescription": "Pagamento Aprovado"
+    },
+    {
+        "status": "ready-for-handling",
+        "statusDescription": "Pronto para o manuseio"
+    },
+    {
+        "status": "handling",
+        "statusDescription": "Preparando Entrega"
+    },
+    {
+        "status": "invoiced",
+        "statusDescription": "Faturado"
+    },
+    {
+        "status": "canceled",
+        "statusDescription": "Cancelado"
+    }
+
+]
