@@ -1,31 +1,23 @@
 [
     {
-        "status": "waiting-for-sellers-confirmation",
-        "statusDescription": "Aguardando autorização para despachar"
-    },
-    {
         "status": "payment-pending",
-        "statusDescription": "Pagamento Pendente"
+        "statusDescription": "Pagamento Pendente",
+		"repick": 0.9
     },
     {
         "status": "payment-approved",
-        "statusDescription": "Pagamento Aprovado"
-    },
-    {
-        "status": "ready-for-handling",
-        "statusDescription": "Pronto para o manuseio"
-    },
-    {
-        "status": "handling",
-        "statusDescription": "Preparando Entrega"
+        "statusDescription": "Pagamento Aprovado",
+		"repick": 0.1
     },
     {
         "status": "invoiced",
-        "statusDescription": "Faturado"
+        "statusDescription": "Faturado",
+		"repick": 0.1
     },
     {
         "status": "canceled",
-        "statusDescription": "Cancelado"
+        "statusDescription": "Cancelado",
+		"repick": 0.9
     }
 
 ]
