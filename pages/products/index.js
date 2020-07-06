@@ -5,53 +5,11 @@ import { SearchOutlined } from '@ant-design/icons';
 
 import Navigation from '../../components/navigation'
 
-import products from '../../data/products.json'
-import orders from '../../data/orders.json'
-
-const getStock = product => {
-    return ""
-}
-
-const getInsights = product => {
-    return ""
-}
-
-const getLastOrder = product => {
-    const latestOrder = orders.find(order => order.items.find(orderProduct => orderProduct.RefId === product.RefId))
-    let lastOrderString = "Nunca vendido"
-    if (latestOrder) {
-        const latestOrderDate = new Date(latestOrder.creationDate)
-        const currentDate = new Date()
-        const minutesAgo = (currentDate - latestOrderDate) / (60000)
-        console.log(minutesAgo)
-        if (minutesAgo < 60 && minutesAgo >= 0) {
-            lastOrderString = `${Math.floor(minutesAgo)} minutos atrás`
-        } else {
-            const hoursAgo = minutesAgo / 60
-            if (hoursAgo < 24 && hoursAgo >= 0) {
-                lastOrderString = `${Math.floor(hoursAgo)} horas atrás`
-            } else {
-                lastOrderString = latestOrderDate.toLocaleDateString()
-            }
-        }
-    }
-    return lastOrderString
-}
-
-orders.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate))
-
-products.forEach(product => {
-    product.Stock = getStock(product)
-    product.Insights = getInsights(product)
-    product.LastOrder = getLastOrder(product)
-    return product;
-});
-
 const columns = [
     {
         title: 'Nome',
         dataIndex: 'Name',
-        render: (text, record) => <Link href='/products/[LinkId]' as={'/products/' + record.LinkId}>{text}</Link>
+        render: (text, record) => <Link href='/products/[LinkId]' as={'/products/' + record.LinkId}><a>{text}</a></Link>
     },
     {
         title: 'Categoria',
@@ -71,7 +29,7 @@ const columns = [
     },
 ]
 
-const Products = () => {
+const Products = ({ products }) => {
     const [filter, setFilter] = useState('')
 
     const searchOnChange = e => {
@@ -94,3 +52,9 @@ const Products = () => {
 }
 
 export default Products
+
+import getProducts from '../../services/products'
+export async function getStaticProps() {
+    const products = getProducts()
+	return { props: { products } }
+}
