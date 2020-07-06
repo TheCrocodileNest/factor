@@ -6,27 +6,32 @@ function getChannelName(id) {
 	return Name
 }
 
-function getRevenue(month = 7) {
+function getRevenue(productLinkId = null) {
 	let total = 0
 	const days = {}
 	const channels = {}
 
 	for (let order of orders) {
-		total += order.totalValue
+		let totalValue = order.totalValue
+		if (productLinkId !== null) {
+			const itemProduct = order.items.filter(product => product.LinkId === productLinkId)
+			totalValue = itemProduct.reduce((currentTotal, product) => currentTotal + product.Price, 0)
+		}
+		total += totalValue
 
 		if (days[order.creationDate] === undefined)
 			days[order.creationDate] = {
 				date: order.creationDate,
-				value: order.totalValue,
+				value: totalValue,
 			}
-		else days[order.creationDate].value += order.totalValue
+		else days[order.creationDate].value += totalValue
 
 		if (channels[order.salesChannel] === undefined)
 			channels[order.salesChannel] = {
 				name: getChannelName(order.salesChannel),
-				value: order.totalValue,
+				value: totalValue,
 			}
-		else channels[order.salesChannel].value += order.totalValue
+		else channels[order.salesChannel].value += totalValue
 	}
 
 	return {

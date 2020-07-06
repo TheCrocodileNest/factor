@@ -1,9 +1,9 @@
 import channels from '../data/channels.json'
 import orders from '../data/orders.json'
 
-function getSpotlightProduct({ Name }) {
+function getSpotlightProduct({ Id }) {
 	const ordersFromChannel = orders.filter(order => {
-		return order.salesChannel == Name
+		return order.salesChannel == Id
 	})
 	if (ordersFromChannel.length == 0) return 'Nenhum'
 
@@ -13,12 +13,12 @@ function getSpotlightProduct({ Name }) {
 
 	for (const order of ordersFromChannel) {
 		for (const item of order.items) {
-			if (productMap[item.Name] == null) productMap[item.Name] = 1
-			else productMap[item.Name]++
+			if (productMap[item.RefId] == null) productMap[item.RefId] = 1
+			else productMap[item.RefId]++
 
-			if (productMap[item.Name] > maxProducts) {
+			if (productMap[item.RefId] > maxProducts) {
 				detachProduct = item.Name
-				maxProducts = productMap[item.Name]
+				maxProducts = productMap[item.RefId]
 			}
 		}
 	}
@@ -26,9 +26,9 @@ function getSpotlightProduct({ Name }) {
 	return detachProduct
 }
 
-function getSpotlightCategory({ Name }) {
+function getSpotlightCategory({ Id }) {
 	const ordersFromChannel = orders.filter(order => {
-		return order.salesChannel == Name
+		return order.salesChannel == Id
 	})
 	if (ordersFromChannel.length == 0) return 'Nenhum'
 
