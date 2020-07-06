@@ -1,0 +1,31 @@
+[
+    {
+        "message": "O produto __ foi esgotado em apenas 7 dias",
+        "recommendation": "Elevar preço em 10% na próxima reposição",
+        "date": "7 de Julho 2020",
+        "type": "product",
+        "action": "yes/no"
+    },
+    {
+        "message": "As vendas do produto __ estão **% maiores no Mercado Livre",
+        "recommendation": "Redirecionar mais 30% do estoque do balcão para a loja no Mercado Livre",
+        "date": "13 de Julho 2020",
+        "type": "product",
+        "action": "yes/no"
+    },
+    {
+        "message": "Os pagamentos cancelados aumentaram **% no últimos 15 dias no canal __",
+        "recommendation": "Avaliar ações de pós-venda",
+        "date": "18 de Julho 2020",
+        "type": "channel",
+        "action": "readmore"
+
+    },
+    {
+        "message": "Os pagamentos via __ atingiram **% de desistência",
+        "recommendation": "Conceder desconto de incentivo ou retirar esta forma de pagamento",
+        "date": "20 de Julho 2020",
+        "type": "payment",
+        "action": "readmore"
+    }
+]
