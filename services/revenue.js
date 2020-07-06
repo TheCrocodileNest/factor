@@ -28,6 +28,7 @@ function getRevenue(productLinkId = null) {
 
 		if (channels[order.salesChannel] === undefined)
 			channels[order.salesChannel] = {
+				id: order.salesChannel,
 				name: getChannelName(order.salesChannel),
 				value: totalValue,
 			}
