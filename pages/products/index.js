@@ -42,10 +42,11 @@ const Products = ({ products }) => {
 	return (
 		<Navigation section='products'>
             <Input
-                prefix={<SearchOutlined style={{color: '#ced4d9'}}/>}
+                prefix={<SearchOutlined style={{color: '#ced4d9', paddingRight: 8}}/>}
                 placeholder="Pesquisar por um produto"
                 size="large"
                 allowClear
+                style={{border: 0, padding: 16}}
                 onChange={searchOnChange}
             />
             <Table dataSource={products.filter(row => !filter || row.Name.toLocaleLowerCase().includes(filter))} columns={columns} rowKey="Name" locale={{emptyText: "Não foram encontrados produtos com o nome informado."}} />

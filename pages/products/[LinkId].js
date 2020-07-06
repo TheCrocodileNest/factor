@@ -28,12 +28,6 @@ const Product = ({ product, revenue, payments, status }) => {
                                 y='value'
                                 data={revenue.channel}
                             />
-                            <PieChart
-								title="Balanço de status de vendas"
-								x="name"
-								y="value"
-								data={status.status}
-                            />
                         </Col>
                         <Col span={12}>
                             <PieChart
@@ -43,6 +37,16 @@ const Product = ({ product, revenue, payments, status }) => {
                                 y="value"
                                 bordered={false}
                                 data={payments.payment}
+                            />
+                        </Col>
+                    </Row>
+                    <Row gutter={[16, 16]}>
+                        <Col span={12}>
+                            <PieChart
+								title="Balanço de status de vendas"
+								x="name"
+								y="value"
+								data={status.status}
                             />
                         </Col>
                     </Row>
