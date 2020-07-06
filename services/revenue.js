@@ -1,4 +1,10 @@
 import orders from '../data/orders.json'
+import channels from '../data/channels.json'
+
+function getChannelName(id) {
+	const { Name } = channels.find(({ Id }) => Id === id)
+	return Name
+}
 
 function getRevenue(month = 7) {
 	let total = 0
@@ -17,7 +23,7 @@ function getRevenue(month = 7) {
 
 		if (channels[order.salesChannel] === undefined)
 			channels[order.salesChannel] = {
-				name: order.salesChannel,
+				name: getChannelName(order.salesChannel),
 				value: order.totalValue,
 			}
 		else channels[order.salesChannel].value += order.totalValue
