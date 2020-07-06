@@ -1,29 +1,37 @@
 import orders from '../data/orders.json'
 
-const getPayments = ({month, channel}) => {
+const getPayments = ({month, channel, productLinkId}) => {
 	let total = 0
 	const days = {}
 	const payments = {}
+	let ordersFromChannel = orders
 
-	const ordersFromChannel = orders.filter(order => {
-		return order.salesChannel == channel
-	})
+	if (channel) {
+		ordersFromChannel = orders.filter(order => {
+			return order.salesChannel == channel
+		})
+	}
 	for (const order of ordersFromChannel) {
-		total += order.totalValue
+		let totalValue = order.totalValue
+		if (productLinkId) {
+			const itemProduct = order.items.filter(product => product.LinkId === productLinkId)
+			totalValue = itemProduct.reduce((currentTotal, product) => currentTotal + product.Price, 0)
+		}
+		total += totalValue
 
 		if (days[order.creationDate] === undefined)
 			days[order.creationDate] = {
 				date: order.creationDate,
-				value: order.totalValue,
+				value: totalValue,
 			}
-		else days[order.creationDate].value += order.totalValue
+		else days[order.creationDate].value += totalValue
 
 		if (payments[order.paymentNames] === undefined)
 			payments[order.paymentNames] = {
 				name: order.paymentNames,
-				value: order.totalValue,
+				value: totalValue,
 			}
-		else payments[order.paymentNames].value += order.totalValue
+		else payments[order.paymentNames].value += totalValue
 	}
 
 	return {
