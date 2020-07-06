@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
-import { Table, Input } from 'antd'
+import { Table, Input, Avatar } from 'antd'
 import Link from 'next/link'
 import { SearchOutlined } from '@ant-design/icons';
 
 import Navigation from '../../components/navigation'
 
 const columns = [
+    {
+        title: '',
+        dataIndex: 'Image',
+        render: text => <Avatar src={text} size="large" shape="square" />,
+        width: 50
+    },
     {
         title: 'Nome',
         dataIndex: 'Name',
@@ -16,12 +22,8 @@ const columns = [
         dataIndex: 'CategoryName'
     },
     {
-        title: 'Estoque',
-        dataIndex: 'Stock'
-    },
-    {
-        title: 'Insights',
-        dataIndex: 'Insights'
+        title: 'Código de Referência',
+        dataIndex: 'RefId'
     },
     {
         title: 'Última venda',
@@ -39,12 +41,12 @@ const Products = ({ products }) => {
 
 	return (
 		<Navigation section='products'>
-            <Input 
+            <Input
                 prefix={<SearchOutlined style={{color: '#ced4d9'}}/>}
                 placeholder="Pesquisar por um produto"
                 size="large"
                 allowClear
-                onChange={searchOnChange} 
+                onChange={searchOnChange}
             />
             <Table dataSource={products.filter(row => !filter || row.Name.toLocaleLowerCase().includes(filter))} columns={columns} rowKey="Name" locale={{emptyText: "Não foram encontrados produtos com o nome informado."}} />
 		</Navigation>

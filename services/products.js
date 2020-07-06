@@ -1,14 +1,6 @@
 import products from '../data/products.json'
 import orders from '../data/orders.json'
 
-function getStock(product) {
-    return ""
-}
-
-function getInsights(product) {
-    return ""
-}
-
 function getLastOrder(product) {
     const latestOrder = orders.find(order => order.items.find(orderProduct => orderProduct.LinkId === product.LinkId))
     let lastOrderString = "Nunca vendido"
@@ -23,7 +15,10 @@ function getLastOrder(product) {
             if (hoursAgo < 24 && hoursAgo >= 0) {
                 lastOrderString = `${Math.floor(hoursAgo)} horas atrás`
             } else {
-                lastOrderString = latestOrderDate.toLocaleDateString()
+                const day = latestOrderDate.getDate() > 9 ? latestOrderDate.getDate() : '0' + latestOrderDate.getDate();
+                const month = latestOrderDate.getMonth() > 8 ? latestOrderDate.getMonth() + 1 : '0' + (latestOrderDate.getMonth() + 1);
+                const year = latestOrderDate.getFullYear();
+                lastOrderString = `${day}/${month}/${year}`
             }
         }
     }
@@ -32,10 +27,8 @@ function getLastOrder(product) {
 
 function getProducts() {
     orders.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate))
-    
+
     products.forEach(product => {
-        product.Stock = getStock(product)
-        product.Insights = getInsights(product)
         product.LastOrder = getLastOrder(product)
         return product
     })
