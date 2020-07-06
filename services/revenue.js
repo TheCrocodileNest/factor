@@ -35,7 +35,7 @@ function getRevenue(productLinkId = null) {
 	}
 
 	return {
-		month: Object.values(days),
+		month: Object.values(days).sort((a, b) => new Date(a.date) - new Date(b.date)),
 		channel: Object.values(channels),
 		total,
 	}
