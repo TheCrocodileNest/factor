@@ -1,28 +1,22 @@
-import orders from '../data/orders.json'
-import templates from '../data/insights.json'
-import channels from '../data/channels.json'
-import products from '../data/products.json'
+import getRevenue from '../services/revenue'
 
 const getInsights = () => {
-    let insights = [];
-    for (let i = 0; i < templates.length; i++) {
-        let order = orders[i]
-        let template = templates[i]
-        let item
-        if (template.type == "product"){
-            item = orders[i].items[0].Name
-        } else if (template.type == "channel") {
-            item = channels[i%channels.length].Name
-        } else {
-            item = orders[i].paymentNames
-        }
+	let insights = []
 
-        let message = template.message.replace('__', item)
-        message = message.replace('**', Math.random()*70|0)
-        let insight = Object.assign({...itemplate}, {message})
-        insights.push(insight)
-    }
-    return insights
+	const revenue = getRevenue()
+	for (let channel of revenue.channel) {
+		const percent = Math.round((channel.value / revenue.total) * 100)
+		if (percent < 20)
+			insights.push({
+				message: `As vendas no canal ${channel.name} representaram apenas ${percent}% da receita`,
+				recommendation: 'Redistribuir estoque para demais canais',
+				type: 'channel',
+				channel: channel,
+				action: 'apply',
+			})
+	}
+
+	return insights
 }
 
-export default getInsights;
+export default getInsights
