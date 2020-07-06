@@ -33,7 +33,6 @@ export default function Channels({ channels, payments, status }) {
 								x="name"
 								y="value"
 								data={status[channel.Id].status}
-								colorScale={['#ff0000', '#00cc00', '#99ff33', '#ffff00']}
 							/>
 						</Col>
 					</Row>
