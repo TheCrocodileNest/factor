@@ -25,7 +25,9 @@ export default function Channels({ channels, payments, status }) {
 									size="large"
 									shape="square"
 								/>
-								{channel.spotlightProduct.name}
+								<span style={{ marginLeft: 8 }}>
+									{channel.spotlightProduct.name}
+								</span>
 							</Card>
 							<Card title="Categoria em Destaque" bordered={false}>
 								{channel.spotlightCategory}
