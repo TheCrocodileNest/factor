@@ -2,13 +2,13 @@ import channels from '../data/channels.json'
 import orders from '../data/orders.json'
 
 function getSpotlightProduct({ Id }) {
-	const ordersFromChannel = orders.filter(order => {
+	const ordersFromChannel = orders.filter((order) => {
 		return order.salesChannel == Id
 	})
 	if (ordersFromChannel.length == 0) return 'Nenhum'
 
 	var productMap = {}
-	var detachProduct = null
+	var spotlightProduct = null
 	var maxProducts = 0
 
 	for (const order of ordersFromChannel) {
@@ -17,23 +17,26 @@ function getSpotlightProduct({ Id }) {
 			else productMap[item.RefId]++
 
 			if (productMap[item.RefId] > maxProducts) {
-				detachProduct = item.Name
+				spotlightProduct = {
+					name: item.Name,
+					image: item.Image,
+				}
 				maxProducts = productMap[item.RefId]
 			}
 		}
 	}
 
-	return detachProduct
+	return spotlightProduct
 }
 
 function getSpotlightCategory({ Id }) {
-	const ordersFromChannel = orders.filter(order => {
+	const ordersFromChannel = orders.filter((order) => {
 		return order.salesChannel == Id
 	})
 	if (ordersFromChannel.length == 0) return 'Nenhum'
 
 	var categoryMap = {}
-	var detachCategory = null
+	var spotlightCategory = null
 	var maxCategory = 0
 
 	for (const order of ordersFromChannel) {
@@ -42,17 +45,17 @@ function getSpotlightCategory({ Id }) {
 			else categoryMap[item.CategoryId]++
 
 			if (categoryMap[item.CategoryId] > maxCategory) {
-				detachCategory = item.CategoryName
+				spotlightCategory = item.CategoryName
 				maxCategory = categoryMap[item.CategoryId]
 			}
 		}
 	}
 
-	return detachCategory
+	return spotlightCategory
 }
 
 function getChannels() {
-	return channels.map(channel => ({
+	return channels.map((channel) => ({
 		...channel,
 		spotlightProduct: getSpotlightProduct(channel),
 		spotlightCategory: getSpotlightCategory(channel),
